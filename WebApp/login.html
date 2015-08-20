@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="589026388952-ckbuc9pjg7e7m0tgebs373235d5ek4ki.apps.googleusercontent.com">
+    <title>.: MiLista :.</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap-social.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="../" class="navbar-brand">MiLista</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="page-header" id="banner">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h1>Ingreso</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-sm-offset-3">
+                <form class="form-signin">
+                    <div class="row">
+                        <label for="inputEmail" class="sr-only">Usuario o Correo Electrónico</label>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Usuario o Correo Electrónico" required autofocus>
+                    </div>
+                    <div class="row">
+                        <label for="inputPassword" class="sr-only">Clave</label>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Clave" required>
+                    </div>
+                    <div class="row">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="remember-me">Recordar
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+                    </div>
+                    <div class="row">
+                            <a class="btn btn-block btn-social btn-lg btn-google">
+                                <i class="fa fa-google"></i> Ingresar con Google
+                            </a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
