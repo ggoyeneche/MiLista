@@ -11,9 +11,16 @@
     <link href="css/bootstrap-social.css" rel="stylesheet">
     <link href="css/font-awesome.css" rel="stylesheet">
 	<script src="js/jquery-1.11.3.min.js"></script>
-	<script src="js/validator.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <style>
+        .ng-invalid.ng-dirty {
+            border-color: #ed0a15;
+        }
+        .ng-valid.ng-dirty {
+            border-color: #07ad1c;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,14 +46,19 @@
         </div>
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-sm-offset-3">
-                <form class="form-signin" data-toggle="validator" ng-controller="LoginController" ng-submit="LoginController.login(loginData)">
+                <form name="formLogin"
+                      class="form-signin"
+                      ng-controller="LoginController as login"
+                      ng-submit="formLogin.$valid && login.login()"
+                      novalidate>
                     <div class="form-group has-feedback">
                         <label for="inputEmail" class="sr-only">Usuario o Correo Electrónico</label>
                         <input type="text"
                                id="inputEmail"
+                               name="userName"
+                               ng-model="login.loginData.userName"
                                class="form-control"
                                placeholder="Usuario o Correo Electrónico"
-                               ng-model="LoginController.loginData.userName"
                                required
                                autofocus>
 						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -55,25 +67,28 @@
                         <label for="inputPassword" class="sr-only">Clave</label>
                         <input type="password"
                                id="inputPassword"
+                               name="password"
+                               ng-model="login.loginData.password"
                                class="form-control"
                                placeholder="Clave"
-                               required
-                               ng-model="LoginController.loginData.password">
+                               required>
 						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
                     <div class="checkbox">
 						<label>
 							<input type="checkbox"
                                    value="remember-me"
-                                   ng-controller="LoginController.loginData.rememberMe">Recordar
+                                   ng-model="login.loginData.rememberMe"
+                                   name="rememberMe">Recordar
                         </label>
                     </div>
 					<div class="form-group">
-						<button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+						<input class="btn btn-lg btn-primary btn-block" type="submit" value="Ingresar"></input>
 					</div>
                     <a class="btn btn-block btn-social btn-lg btn-google" style="display:none">
 						<i class="fa fa-google"></i> Ingresar con Google
                     </a>
+                    <p>{{formLogin.$valid}}</p>
                 </form>
             </div>
         </div>
@@ -81,8 +96,11 @@
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="js/angular-md5.js"></script>
+    <script src="js/angular-mongolab.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/app/app.js"></script>
+    <script src="js/app/login.js"></script>
 </body>
 
 </html>
