@@ -1,21 +1,24 @@
 (function($app){
-    debugger;
-    $app.controller("ShoppingListController", function($scope, ApiDB){
-        debugger;
+    $app.controller("ShoppingListController", function($scope, $location, ApiDB){
         this.goToIndex = function(){
-            //$location.path('/list');
+            $location.path('/list');
         };
 
         this.new = function(){
-            //$location.path('/list_new');
+            $location.path('/new');
         };
+
+        this.goToIndex();
     });
 
-    /*$app.config(function($routeProvider){
+    $app.controller("ShoppingListControllerCRUD", function($scope, $location, ApiDB){
+    });
+
+    $app.config(function($routeProvider){
         $routeProvider
             .when('/list', {
                 templateUrl: 'templates/list.html',
-                controller: 'ShoppingListController',
+                controller: 'ShoppingListControllerCRUD',
                 resolve: {
                     // I will cause a 1 second delay
                     delay: function($q, $timeout) {
@@ -27,7 +30,7 @@
             })
             .when('/new', {
                 templateUrl: 'templates/list_new.html',
-                controller: 'ShoppingListController'
+                controller: 'ShoppingListControllerCRUD'
             });
-    });*/
+    });
 })(app);

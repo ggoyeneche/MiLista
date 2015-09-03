@@ -2,7 +2,10 @@
     $app.controller("PageController", function($scope, SessionService){
         var me = this;
         $scope.pageData = {
-            helpLink: 'Ayuda'
+            helpLink: 'Ayuda',
+            templates: {
+                menu: "templates/page-menu.html"
+            }
         };
 
         this.validateSession = function(){
@@ -13,10 +16,5 @@
         }
 
         this.validateSession();
-    }).directive("pageMenu", function(){
-        return {
-            restrict: 'E',
-            templateUrl: 'templates/page-menu.html'
-        };
     });
 })(app);
