@@ -1,4 +1,4 @@
-var app = angular.module("milista", ['mongolabResourceHttp', 'angular-md5']);
+var app = angular.module("milista", ['mongolabResourceHttp', 'angular-md5', 'ngRoute']);
 
 app.constant('MONGOLAB_CONFIG',
 {
@@ -10,7 +10,8 @@ app.constant('MONGOLAB_CONFIG',
     $app.factory('ApiDB', function ($mongolabResourceHttp) {
         return {
             Users: $mongolabResourceHttp('users'),
-            Sessions: $mongolabResourceHttp('sessions')
+            Sessions: $mongolabResourceHttp('sessions'),
+            ShoppingLists: $mongolabResourceHttp('shoppingLists')
         }
     });
 })(app);
