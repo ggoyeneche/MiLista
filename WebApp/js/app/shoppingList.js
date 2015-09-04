@@ -12,6 +12,14 @@
     });
 
     $app.controller("ShoppingListControllerCRUD", function($scope, $location, ApiDB){
+        this.getAll = function(){};
+
+        this.create = function(shoppingList){
+
+        };
+
+        this.addProduct = function(product){
+        };
     });
 
     $app.config(function($routeProvider){

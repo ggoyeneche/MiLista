@@ -9,6 +9,7 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/bootstrap-social.css" rel="stylesheet">
     <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
 	<script src="js/jquery-1.11.3.min.js"></script>
     <style>
         .ng-invalid.ng-dirty {
@@ -22,7 +23,7 @@
 
 <body ng-controller="PageController">
     <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <a href="../" class="navbar-brand">MiLista</a>
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
@@ -34,20 +35,17 @@
         </div>
     </div>
     <div class="container">
-        <div class="page-header" id="banner">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <h1>Ingreso</h1>
-                </div>
-            </div>
-        </div>
+        <div class="page-wrapper">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-sm-offset-3">
+                <div class="well">
                 <form name="formLogin"
                       class="form-signin"
                       ng-controller="LoginController as login"
                       ng-submit="formLogin.$valid && login.login()"
                       novalidate>
+                    <fieldset>
+                        <legend>Ingreso</legend>
                     <div class="form-group has-feedback">
                         <label for="inputEmail" class="sr-only">Usuario o Correo Electrónico</label>
                         <input type="text"
@@ -85,11 +83,12 @@
                     <a class="btn btn-block btn-social btn-lg btn-google" style="display:none">
 						<i class="fa fa-google"></i> Ingresar con Google
                     </a>
-                    <p>{{formLogin.$valid}}</p>
+                    </fieldset>
                 </form>
+                </div>
             </div>
         </div>
-        <br>
+        </div>
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
