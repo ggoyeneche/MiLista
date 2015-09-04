@@ -8,6 +8,10 @@
             }
         };
 
+        this.openPage = function(url){
+            $location.path(url);
+        }
+
         this.validateSession = function(){
             debugger;
             if (!SessionService.isActive("127.0.0.1")) {
