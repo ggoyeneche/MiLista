@@ -1,5 +1,5 @@
 (function($app){
-    $app.controller("ShoppingListController", function($scope, $location, ApiDB){
+    $app.controller("ShoppingListController", function($scope, $location, $route, ApiDB){
         this.goToIndex = function(){
             $location.path('/list');
         };
@@ -12,29 +12,35 @@
     });
 
     $app.controller("ShoppingListControllerCRUD", function($scope, $location, ApiDB){
-        this.getAll = function(){};
+        $scope.returnToList = function(){
+            $location.path('/list');
+        };
 
-        this.create = function(shoppingList){
+        $scope.create = function(shoppingList){
 
         };
 
-        this.addProduct = function(product){
+        this.getAll = function(){
+            jQuery.isLoading({text:"Cargando datos..."});
+            ApiDB.ShoppingLists.all().then(function(shoppingLists){
+                $scope.shoppingLists = shoppingLists;
+                jQuery.isLoading("hide");
+            });
+
         };
+
+        switch ($location.path()){
+            case "/list":
+                this.getAll();
+                break;
+        }
     });
 
     $app.config(function($routeProvider){
         $routeProvider
             .when('/list', {
                 templateUrl: 'templates/list.html',
-                controller: 'ShoppingListControllerCRUD',
-                resolve: {
-                    // I will cause a 1 second delay
-                    delay: function($q, $timeout) {
-                        var delay = $q.defer();
-                        $timeout(delay.resolve, 1000);
-                        return delay.promise;
-                    }
-                }
+                controller: 'ShoppingListControllerCRUD'
             })
             .when('/new', {
                 templateUrl: 'templates/list_new.html',
