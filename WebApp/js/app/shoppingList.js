@@ -1,42 +1,43 @@
-(function($app){
-    $app.controller("ShoppingListController", function($scope, $location, $route, ApiDB){
-        this.goToIndex = function(){
+(function ($app) {
+    "use strict";
+    $app.controller("ShoppingListController", function ($scope, $location, $route, ApiDB) {
+        this.goToIndex = function () {
             $location.path('/list');
         };
 
-        this.new = function(){
+        this.newList = function () {
             $location.path('/new');
         };
 
         this.goToIndex();
     });
 
-    $app.controller("ShoppingListControllerCRUD", function($scope, $location, ApiDB){
-        $scope.returnToList = function(){
+    $app.controller("ShoppingListControllerCRUD", function ($scope, $location, ApiDB) {
+        $scope.returnToList = function () {
             $location.path('/list');
         };
 
-        $scope.create = function(shoppingList){
+        $scope.create = function (shoppingList) {
 
         };
 
-        this.getAll = function(){
-            jQuery.isLoading({text:"Cargando datos..."});
-            ApiDB.ShoppingLists.all().then(function(shoppingLists){
+        this.getAll = function () {
+            jQuery.isLoading({text: "Cargando datos..."});
+            ApiDB.ShoppingLists.all().then(function (shoppingLists) {
                 $scope.shoppingLists = shoppingLists;
                 jQuery.isLoading("hide");
             });
 
         };
 
-        switch ($location.path()){
+        switch ($location.path()) {
             case "/list":
                 this.getAll();
                 break;
         }
     });
 
-    $app.config(function($routeProvider){
+    $app.config(function ($routeProvider) {
         $routeProvider
             .when('/list', {
                 templateUrl: 'templates/list.html',
