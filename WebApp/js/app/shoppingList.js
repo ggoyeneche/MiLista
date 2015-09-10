@@ -12,7 +12,7 @@
         this.goToIndex();
     });
 
-    $app.controller("ShoppingListControllerCRUD", function ($scope, $location, ApiDB) {
+    $app.controller("ShoppingListControllerList", function ($scope, $location, ApiDB) {
         $scope.returnToList = function () {
             $location.path('/list');
         };
@@ -30,22 +30,49 @@
 
         };
 
-        switch ($location.path()) {
-            case "/list":
-                this.getAll();
-                break;
+        this.getAll();
+    });
+
+    $app.controller("ShoppingListControllerNew", function ($scope, $location, ApiDB) {
+        $scope.returnToList = function () {
+            $location.path('/list');
+        };
+
+        $scope.create = function (shoppingList) {
+
+        };
+
+        this.initialize = function(){
+            $.isLoading({text: "Inicializando..."});
+
+            setTimeout(function(){
+                var now = new Date();
+
+                $('#datetimepicker1').datetimepicker({
+                    defaultDate: now,
+                    format: "DD/MM/YYYY"
+                });
+
+                //$.get('example_collection.json', function(data){
+                    $("#exampleInputPassword3").typeahead();
+                //},'json');
+
+                $.isLoading("hide");
+            }, 100);
         }
+
+        this.initialize();
     });
 
     $app.config(function ($routeProvider) {
         $routeProvider
             .when('/list', {
-                templateUrl: 'templates/list.html',
-                controller: 'ShoppingListControllerCRUD'
+                templateUrl: 'templates/list/index.html',
+                controller: 'ShoppingListControllerList'
             })
             .when('/new', {
-                templateUrl: 'templates/list_new.html',
-                controller: 'ShoppingListControllerCRUD'
+                templateUrl: 'templates/list/new.html',
+                controller: 'ShoppingListControllerNew'
             });
     });
 })(app);

@@ -1,9 +1,9 @@
-<button type="button" class="btn btn-link" ng-click="slc.new()">Agregar Lista</button>
-<div ng-repeat="sl in shoppingLists">
-    {{ sl.description }}
+<button type="button" class="btn btn-link" ng-click="pc.newProduct()">Agregar Producto</button>
+<div ng-repeat="p in products">
+    {{ p.description }}
 </div>
 <div class="alert alert-danger" role="alert" ng-show="!shoppingLists.length">
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
   <span class="sr-only"></span>
-  No hay listas cargadas
+  No hay productos cargados
 </div>

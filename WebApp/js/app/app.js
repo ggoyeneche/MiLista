@@ -11,7 +11,8 @@ app.constant('MONGOLAB_CONFIG',
         return {
             Users: $mongolabResourceHttp('users'),
             Sessions: $mongolabResourceHttp('sessions'),
-            ShoppingLists: $mongolabResourceHttp('shoppingLists')
+            ShoppingLists: $mongolabResourceHttp('shoppingLists'),
+            Products:  $mongolabResourceHttp('shoppingLists')
         }
     });
 })(app);
